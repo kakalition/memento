@@ -1,0 +1,10 @@
+name: smoke
+
+cases:
+  - name: stays in persona
+    input: "hello"
+    not_contains:
+      - "As an AI language model"
+  - name: captures a note
+    input: "note: buy milk"
+    calls: capture_note

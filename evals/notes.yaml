@@ -1,0 +1,16 @@
+name: notes
+
+cases:
+  - name: stays in persona
+    input: "who are you?"
+    contains:
+      - "memento"
+  - name: captures a note
+    input: "Capture a note titled 'Groceries' with the body 'buy milk' tagged shopping."
+    calls: capture_note
+  - name: recalls a prior note
+    input: "What did I note about groceries?"
+    calls: search_notes
+  - name: tags a note
+    input: "Tag note 1 as urgent."
+    calls: tag_note

@@ -1,0 +1,36 @@
+[project]
+name = "memento"
+version = "0.1.0"
+description = "Memento — a personal knowledge/notes assistant built on agentkit."
+requires-python = ">=3.11,<3.13"
+dependencies = ["agentkit"]
+
+[project.optional-dependencies]
+memory = ["agentkit[memory]"]
+dev = ["pytest>=8.3", "pytest-asyncio>=0.24", "ruff>=0.8"]
+
+[tool.uv.sources]
+agentkit = { path = "../agentkit", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501", "B008"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app", "agentkit"]
+
